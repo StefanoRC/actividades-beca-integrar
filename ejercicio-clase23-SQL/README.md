@@ -1,1 +1,5 @@
 ![EJERCICIO_01](images/ejercicio_01.png)
+![EJERCICIO_02](images/ejercicio_02.png)
+![EJERCICIO_03](images/ejercicio_03.png)
+![EJERCICIO_04](images/ejercicio_04.png)
+![EJERCICIO_05](images/ejercicio_05.png)
