@@ -1,0 +1,1 @@
+![EJERCICIO_01](images/ejercicio_01.png)
