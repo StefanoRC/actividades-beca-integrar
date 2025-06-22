@@ -1,0 +1,288 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <header>
+    <h1>EJERCICIO 2 ASTRO</h1>
+  </header>
+
+  <main>
+    <h2>EJEMPLO 1 DE LINEAR GRADIENTE:</h2>
+
+    <div class="gradient__lineal1"></div>
+
+    <div class="gradient__lineal2"></div>
+
+    <div class="gradient__lineal3"></div>
+
+    <h2>EJEMPLO 2 DE RADIAL GRADIENT</h2>
+
+    <div class="gradient__radial1"></div>
+
+    <div class="gradient__radial2"></div>
+
+    <div class="gradient__radial3"></div>
+
+    <h2>EJEMPLO 3 CONIC GRADIENT</h2>
+
+    <div class="gradient__conic"></div>
+
+    <h2>MULTIPLES CAPAS</h2>
+
+    <div class="multiples__capas1"></div>
+
+    <div class="multiples__capas2"></div>
+
+    <h2 class="animation__1">ANIMACION TRANSFORMACION</h2>
+
+    <div class="animation__2"></div>
+
+    <h2 class="animation__final">ANIMACION COMPLEJA</h2>
+
+  </main>
+</Layout>
+
+<style>
+  main :is(h1, h2, h3) {
+    margin: 20px;
+  }
+
+
+
+
+  .gradient__lineal1 {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-image: linear-gradient(oklch(0.81 0.2294 136.59));
+    /*un gradiente de un solo color */
+    background-size: contain;
+
+  }
+
+  .gradient__lineal2 {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-size: 5em;
+    background-image: linear-gradient(45deg,
+        oklch(0.6 0.2294 22.24),
+        oklch(0.5 0.2294 265.76));
+    /* un gradiente de 45grados que va del azul a amarrilo, de izquiera a derecha */
+    background-attachment: fixed;
+  }
+
+  .gradient__lineal3 {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-repeat: repeat;
+    background-image: linear-gradient(to left top,
+        oklch(0.36 0.0829 45.4 / 93.66%),
+        oklch(0.74 0.1455 74.12));
+    /* un gradiente que va desde la abajo a la derecha ha arriba a la izquierda */
+    background-size: 10%;
+    background-position: 5%;
+    background-attachment: scroll;
+  }
+
+
+
+  .gradient__radial1 {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-position: 10px 52px;
+    background-image: repeating-radial-gradient(circle closest-side at 20px 30px,
+        oklch(0.43 0.1455 16.56),
+        oklch(0.81 0.1455 92.12),
+        oklch(0.6 0.1455 145.06) 100%,
+        oklch(0.81 0.1455 92.12) 150%,
+        oklch(0.43 0.1455 16.56) 200%);
+    /* un gradiente radial repetitivo con forma de circulo
+                                                                                                  closet side para que se ajuste el tamaño del circulo en el contenedor*/
+    background-attachment: fixed;
+  }
+
+  .gradient__radial2 {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-size: 4em;
+    background-image: radial-gradient(oklch(0.79 0.1224 201.18) 10%,
+        transparent 50%,
+        oklch(0.79 0.0895 28.31) 80%), conic-gradient(from 40deg, oklch(0.54 0.1455 13.35), oklch(1 0 0));
+    /* aca aplicamos un radiante de gradient donde el primer valor esta en el
+                                                                                    centro, el % es lo que cubre el area donde se aplica el gradiente, el tranasparent
+                                                                                     va desde el 10% del cyan hasta un %50 de transparencia de ese mismo cyan, el 80% del salmon 
+                                                                                     es el espacio que ocupa en el gradiente desde el %50 hasta el %80*/
+    background-repeat: round;
+  }
+
+  .gradient__radial3 {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-image: radial-gradient(circle at center in oklch shorter hue,
+        oklch(0.43 0.1543 16.56),
+        oklch(0.43 0.1543 268.66));
+    /*circulo en el centro en la paleta oklch,
+que tome el camino mas corto en el hue, de rojo hasta azul */
+    background-position: 14em;
+  }
+
+
+
+
+  .gradient__conic {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-image: conic-gradient(from 90deg, oklch(0.72 0.118 333.83), oklch(0.72 0.1543 163.05));
+    background-repeat: repeat;
+  }
+
+
+
+  .multiples__capas1 {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-image: linear-gradient(45deg, oklch(0.52 0.1312 250.5), oklch(0.34 0.118 333.83)), conic-gradient(from 15deg, oklch(0.49 0.2322 283.62), oklch(0.69 0.118 106.29));
+    background-repeat: repeat;
+  }
+
+  .multiples__capas2 {
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    background-image: conic-gradient(from 90deg, oklch(0.59 0.1751 332.76), oklch(0.59 0.1751 147.17));
+    /*circulo en el centro en la paleta oklch,
+                                                                                             que tome el camino mas corto en el hue, de rojo hasta azul */
+    background-position: 14em;
+
+  }
+
+
+
+
+  @keyframes animation-transformation {
+    0% {}
+
+    50% {
+      transform: scale(1.1) rotate(5deg) translate(10px);
+
+    }
+
+    100% {}
+  }
+
+  .animation__1 {
+    border-radius: 10px;
+    background-color: oklch(0.38 0.1005 272.12);
+    display: inline-block;
+  }
+
+  .animation__1:hover {
+    animation: animation-transformation 3s infinite forwards;
+  }
+
+
+
+
+
+  @keyframes animation-change-property {
+
+    0% {
+
+      background-color: oklch(0.37 0.1411 265.76);
+      width: 220px;
+      height: 220px;
+      opacity: 0
+    }
+
+    50% {
+
+      opacity: 0.5;
+      background-color: oklch(0.71 0.1005 203.5);
+    }
+
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  .animation__2 {
+    width: 200px;
+    height: 200px;
+    background-image: radial-gradient(oklch(0.83 0.1411 88.94) 10%,
+        transparent 50%,
+        oklch(0.5 0.1411 145.06) 90%);
+    margin: 20px;
+  }
+
+  .animation__2:hover {
+    animation: animation-change-property 2s linear;
+  }
+
+
+
+  .animation__final {
+    font-size: 2rem;
+    color: oklch(0.44 0.1411 28.58);
+    display: inline-block;
+  }
+
+  .animation__final:hover {
+    animation: animacionCompleja 3s linear infinite alternate;
+  }
+
+  @keyframes animacionCompleja {
+    0% {
+      font-family: fantasy;
+      transition-timing-function: ease-out;
+      color: oklch(0.38 0.1543 263.32);
+      transform: translate(-10px) perspective(150px);
+    }
+
+    10% {
+      font-family: fantasy;
+    }
+
+
+    25% {
+      font-family: fantasy;
+      border-radius: 10px;
+      opacity: 0;
+      transition-timing-function: linear;
+      color: oklch(0.54 0.1 310.33);
+    }
+
+
+    50% {
+      font-family: fantasy;
+      border-radius: 1px;
+      text-decoration: underline;
+      opacity: 0.5;
+      transform: rotate3d(1, 1, 1, 1deg) rotate(1deg) scale(1.1);
+    }
+
+
+    75% {
+      font-family: fantasy;
+      opacity: 0.5;
+      text-decoration: underline;
+      color: oklch(0.7 0.1 232);
+      rotate: 10deg;
+
+    }
+
+
+    100% {
+      font-family: fantasy;
+      opacity: 0;
+      transition-timing-function: ease;
+    }
+  }
+</style>

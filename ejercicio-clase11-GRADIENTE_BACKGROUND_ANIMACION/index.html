@@ -1,0 +1,159 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <header>
+    <h1 id="title">Stefano Reaño</h1>
+    <img
+      class="images__profile"
+      src="https://img.freepik.com/premium-photo/young-programmer-working-late-night_1282444-98239.jpg"
+      alt="foto-perfil"
+    />
+    <article class="introducing">
+      <p class="introducing__me">
+        Gran motivacion para seguir aprendiendo, perfeccionando y ampliando
+        habilidades para crecer profesionalmente. Tengo flexibidad horaria, soy
+        muy diligente, atento y dedicado, cualidades que empleo en todo lo que
+        hago.
+      </p>
+    </article>
+  </header>
+
+  <main>
+    <section class="experience">
+      <h2 class="experience__title">Conocimientos IT</h2>
+      <ul class="list__it">
+        <li>Java</li>
+        <li>Java Script</li>
+        <li>Php</li>
+        <li>Html</li>
+        <li>Astro</li>
+        <li>Wsl</li>
+        <li>Docker</li>
+        <li>Git</li>
+      </ul>
+      <h3 class="experience__title">Experiencia Laboral</h3>
+      <ul class="list__job">
+        <li>Supermercado Dia (Repositor 2021-2022)</li>
+        <li>Ocasa (Auxiliar Deposito eventual)</li>
+        <li>Supermercado (Repositor 2017-2018)</li>
+      </ul>
+      <h4 class="experience__title">Conocimientos Extra:</h4>
+      <ul class="list__language">
+        <li>Español: Nativo</li>
+        <li>Ingles: Basico</li>
+        <li>Portugués: Basico</li>
+      </ul>
+      <h5 class="experience__title">Educacion:</h5>
+      <ul class="list__school">
+        <li>Secundario: Escuela Hipolito Yrigoyen (2019-2021)</li>
+        <li>Primario: San antonio de padua (2006-2012)</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <form class="contact">
+      <fieldset class="contact__form">
+        <legend>Formulario de Contacto</legend>
+        <label for="text">Nombre:</label>
+        <input type="text" id="text" required />
+        <label for="affair">Asunto:</label>
+        <input type="text" id="affair" required />
+        <br />
+        <br />
+        <textarea></textarea>
+        <button type="submit">Enviar</button>
+      </fieldset>
+    </form>
+  </footer>
+</Layout>
+
+<style>
+  header {
+    text-align: center;
+    text-wrap: balance;
+    font-size: 28px;
+  }
+
+  #title {
+    margin: 15px;
+    font-size: 6rem;
+    text-align: center;
+    background: linear-gradient(
+      to left in oklch,
+      oklch(0.58 0.1608 146.88),
+      oklch(0.18 0.0025 146.88)
+    );
+  }
+
+  #title::after {
+    content: "💻";
+  }
+
+  .images__profile {
+    border-radius: 50px;
+  }
+
+  .images__profile:hover {
+    filter: grayscale();
+    transition: filter 0.3s ease;
+  }
+
+  .experience__title::before{
+    content: "🖱";
+    padding: 10px;
+  }
+
+  .experience :is(h1, h2, h3, h4, h5) {
+    background-color: oklch(0.35 0.1038 146.88);
+    border-radius: 5px;
+    font-size: 35px;
+    margin: 20px;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    text-align: center;
+   
+  }
+
+  li{
+    line-height: 40px;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  .contact > .contact__form{
+    margin-bottom: 10px;
+    border-color:  oklch(0.35 0.1038 146.88);
+    border-radius: 100px;
+    border
+  }
+
+  input:valid {
+    background-color: oklch(0.48 0.1431 146.88);
+  }
+
+  [type="text"] {
+    background-color: oklch(0.18 0.0025 146.88);
+    color: oklch(1 0 0);
+  }
+
+  button {
+    background-color: oklch(0.18 0.0025 146.88);
+    color: oklch(1 0 0);
+  }
+
+  button:hover {
+    color: oklch(0.35 0.1038 146.88);
+  }
+
+  button:active {
+    transform: scale(1.1);
+  }
+</style>
