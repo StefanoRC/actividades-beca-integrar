@@ -1,0 +1,177 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <section class="users">
+    <aside class="user__container">
+      <div class="user__content">
+        <img
+          src="https://images.icon-icons.com/10/PNG/256/user_person_customer_man_1532.png"
+          alt="user 1"
+        />
+        <div class="user__info">
+          <h3 class="user__name">Stefano Reaño</h3>
+          <span class="user__job">Desarrollador Web</span>
+          <button>Ir al Perfil</button>
+        </div>
+      </div>
+      <div class="user__content">
+        <img
+          src="https://images.icon-icons.com/10/PNG/256/user_person_customer_man_1532.png"
+          alt="user 2"
+        />
+        <div class="user__info">
+          <h3 class="user__name">Mayra Belen</h3>
+          <span class="user__job">Desarrollador Web</span>
+          <button>Ir al Perfil</button>
+        </div>
+      </div>
+      <div class="user__content">
+        <img
+          src="https://images.icon-icons.com/10/PNG/256/user_person_customer_man_1532.png"
+          alt="user 3"
+        />
+        <div class="user__info">
+          <h3 class="user__name">Ezequiel godoy</h3>
+          <span class="user__job">Desarrollador Web</span>
+          <button>Ir al Perfil</button>
+        </div>
+      </div>
+      <div class="user__content">
+        <img
+          src="https://images.icon-icons.com/10/PNG/256/user_person_customer_man_1532.png"
+          alt="user 4"
+        />
+        <div class="user__info">
+          <h3 class="user__name">Mario Bros</h3>
+          <span class="user__job">Desarrollador Web</span>
+          <button>Ir al Perfil</button>
+        </div>
+      </div>
+      <div class="user__content">
+        <img
+          src="https://images.icon-icons.com/10/PNG/256/user_person_customer_man_1532.png"
+          alt="user 4"
+        />
+        <div class="user__info">
+          <h3 class="user__name">Luigo Bros</h3>
+          <span class="user__job">Desarrollador Web</span>
+          <button>Ir al Perfil</button>
+        </div>
+      </div>
+      <div class="user__content">
+        <img
+          src="https://images.icon-icons.com/10/PNG/256/user_person_customer_man_1532.png"
+          alt="user 4"
+        />
+        <div class="user__info">
+          <h3 class="user__name">Facha Palacios</h3>
+          <span class="user__job">Desarrollador Web</span>
+          <button>Ir al Perfil</button>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <style>
+    aside {
+      margin: 4rem;
+    }
+
+    button {
+      justify-self: center;
+      width: 100px;
+    }
+
+    .users {
+      .user__container {
+        container-type: inline-size;
+        container-name: user;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        .user__content {
+          border: 2px solid pink;
+          border-radius: 20px;
+          justify-items: center;
+          align-items: center;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          background-color: rgb(56, 37, 90);
+          .user__info {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            .user__job {
+              gap: 1rem;
+              text-align: center;
+            }
+            .user__name {
+              text-align: center;
+              align-self: center;
+              font-size: 25px;
+            }
+          }
+        }
+      }
+    }
+
+    @media (min-width: 0px) and (max-width: 1040px) {
+      .users {
+        justify-self: center;
+        .user__info {
+          .user__name {
+            display: none;
+          }
+        }
+
+        .user__container {
+          grid-template-columns: 200px;
+          .user__job {
+            display: none;
+          }
+          .user__content {
+            grid-template-columns: 1fr;
+          }
+          button {
+            display: none;
+          }
+        }
+      }
+    }
+
+    @container user (min-width: 900px) and (max-width: 1400px) {
+      .user__job {
+        display: none;
+      }
+
+      .user__content {
+        grid-auto-rows: 150px;
+      }
+
+      .user__name {
+        grid-area: 2 / 3;
+        width: 100%;
+        text-align: center;
+      }
+
+      button {
+        display: none;
+      }
+    }
+
+    @container user (min-width: 613px) and (max-width: 900px) {
+      .user__job {
+        display: none;
+      }
+
+      button {
+        display: none;
+      }
+
+      .user__name {
+        display: none;
+      }
+    }
+  </style>
+</MainLayout>
