@@ -1,0 +1,241 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout>
+  <div class="form-content">
+    <form>
+      <div class="div__content">
+        <label for="name">Name:</label>
+        <div class="input__content">
+          <input type="text" name="name" id="name" class="input" />
+        </div>
+      </div>
+      <div class="div__content">
+        <label for="last-name">Last Name:</label>
+        <div class="input__content">
+          <input type="text" name="last-name" id="last-name" class="input" />
+        </div>
+      </div>
+      <div class="div__content">
+        <label for="username">Username:</label>
+        <div class="input__content">
+          <input type="text" name="username" id="username" class="input" />
+        </div>
+      </div>
+      <div class="div__content">
+        <label for="password">Password:</label>
+        <div class="input__content">
+          <input type="password" name="password" id="password" class="input" />
+        </div>
+      </div>
+      <div class="div__content">
+        <label for="confirm-password">Confirm Password:</label>
+        <div class="input__content">
+          <input
+            type="password"
+            name="confirm-password"
+            id="confirm-password"
+            class="input"
+          />
+        </div>
+      </div>
+      <div class="div__content">
+        <label for="birthday">Birthday</label>
+        <div class="input__content">
+          <input type="date" name="birthday" id="birthday" class="input" />
+        </div>
+      </div>
+      <div class="div__content">
+        <label for="">Click para suscribirse</label>
+        <div class="input__content">
+          <input type="checkbox" id="checkbox" name="checkbox" class="input" />
+        </div>
+      </div>
+      <div class="div__content">
+        <button id="button-open-modal" class="button__form">
+          Enviar Formulario
+        </button>
+      </div>
+    </form>
+    <div class="modal" id="modal">
+      <div class="modal__content" id="modal-content">
+        <div class="button__close__modal">
+          <button id="modal-close">X</button>
+        </div>
+        <span>Seguro que quiere enviar el formulario?</span>
+        <div class="buttons__modal">
+          <button id="modal-confirm">Confirmar</button>
+          <button id="modal-cancel">Cancelar</button>
+        </div>
+        <div class="notification" id="notification"></div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .form-content {
+      font-size: 30px;
+      justify-self: center;
+      align-self: center;
+      background-color: rgb(0, 50, 70);
+      border-radius: 10px;
+      .div__content {
+        padding: 0.5rem;
+        text-align: center;
+        .input {
+          width: 250px;
+          height: 50px;
+          font-size: 30px;
+        }
+      }
+    }
+
+    .button__form {
+      width: 300px;
+      height: 50px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.503);
+      justify-content: center;
+      align-items: center;
+      .modal__content {
+        padding: 1em;
+        background: rgb(12, 0, 46);
+        border-radius: 10px;
+        font-size: 2.5rem;
+        .notification {
+          font-size: 30px;
+          justify-self: center;
+          background-color: rgba(171, 0, 0, 0.346);
+          border-radius: 10px;
+        }
+      }
+    }
+
+    .buttons__modal {
+      justify-self: center;
+    }
+  </style>
+
+  <script>
+    //////////////////////////SELECTORS////////////////////////////////
+    const form = document.querySelector("form");
+    const $nameInput = document.querySelectorAll(
+      'input[name="name"], input[name="last-name"]'
+    );
+    const $username = document.querySelector('input[name="username"]');
+    const $passwords = document.querySelectorAll(
+      'input[name="password"], input[name="confirm-password"]'
+    );
+    const $birthday = document.querySelector('input[name="birthday"]');
+    const $checkbox = document.querySelector('input[name="checkbox"]');
+    const modal = document.getElementById("modal");
+    const buttonOpenModal = document.getElementById("button-open-modal");
+    const modalConfirm = document.getElementById("modal-confirm");
+    const modalCancel = document.getElementById("modal-cancel");
+    const modalClose = document.getElementById("modal-close");
+    const $notification = window.document.getElementById("notification");
+
+    ////////////////////////CONFIRM FORM IN WINDOW MODAL////////////////////////////////
+
+    modalConfirm.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (!validationNames({ target: $nameInput[0] })) return;
+      if (!validationNames({ target: $nameInput[1] })) return;
+      if (!validationUsername({ target: $username })) return;
+      if (!validationPasswords({ target: $passwords[0] })) return;
+      if (!validationBirthday({ target: $birthday })) return;
+      if (!validationCheckbox({ target: $checkbox })) return;
+      const formData = new FormData(form);
+      const fields = Object.fromEntries(formData);
+      console.log(fields);
+      modal.style.display = "none";
+    });
+
+    //////////////////////////VALIDATIONS////////////////////////////////////////
+
+    const validationNames = (event) => {
+      const value = event.target.value;
+      if (value === "") {
+        $notification.innerText = "El campo no puede estar vacio";
+        return false;
+      } else if (/\d/.test(value)) {
+        $notification.innerText = "El campo no puede contener numeros";
+        return false;
+      } else {
+        $notification.innerText = "";
+        return true;
+      }
+    };
+
+    const validationUsername = (event) => {
+      const value = event.target.value;
+      if (value === "") {
+        $notification.innerText = "El campo no puede estar vacio";
+        return false;
+      } else {
+        $notification.innerText = "";
+        return true;
+      }
+    };
+
+    const validationPasswords = (event) => {
+      const password = ($passwords[0] as HTMLInputElement).value;
+      const confirmPassword = ($passwords[1] as HTMLInputElement).value;
+
+      if (!password || !confirmPassword) {
+        $notification.innerText = "Las contraseñas no pueden estar vacías";
+        return false;
+      }
+      if (password === confirmPassword) {
+        return true;
+      } else {
+        $notification.innerText = "Las contraseñas no coinciden";
+        return false;
+      }
+    };
+
+    const validationBirthday = (event) => {
+      if (!event.target.value) {
+        $notification.innerText = "Por favor elige la fecha de tu nacimiento";
+        return false;
+      } else {
+        $notification.innerText = "";
+        return true;
+      }
+    };
+
+    const validationCheckbox = (event) => {
+      if (!event.target.checked) {
+        $notification.innerText = "Por favor suscribase";
+        return false;
+      } else {
+        $notification.innerText = "";
+        return true;
+      }
+    };
+
+    //////////////////////////WINDOW MODAL/////////////////////////////////////
+
+    buttonOpenModal.addEventListener("click", (event) => {
+      event.preventDefault();
+      modal.style.display = "flex";
+    });
+
+    modalCancel.addEventListener("click", (event) => {
+      modal.style.display = "none";
+    });
+
+    modalClose.addEventListener("click", (event) => {
+      modal.style.display = "none";
+    });
+  </script>
+</MainLayout>
